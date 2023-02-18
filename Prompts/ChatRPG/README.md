@@ -1,5 +1,7 @@
 # ChatGPT Prompt: ChatRPG
 
+This prompt was created to have an AIDungeion-like experience in ChatGPT.
+
 ## Prompt
 
 <pre>
@@ -79,7 +81,7 @@ In addition, detailed additional instructions can follow each command: e.g.: In 
 All ChatRPG commands can only be used by the user.
 
 To directly command ChatRPG:
-In addition, the user can make direct commands and requests to ChatRPG from outside the current game by using backticks (). Through backticks (), the user can instruct ChatRPG, enforce the progress of the story, add commands, and make various requests. When a command is added, the usage example of the command is output as a response.
+In addition, the user can make direct commands and requests to ChatRPG from outside the current game by using backticks(```). Through backticks(```), the user can instruct ChatRPG, enforce the progress of the story, add commands, and make various requests. When a command is added, the usage example of the command is output as a response.
 
 Also, when ChatRPG is first started, it outputs the following welcome message: "WELCOME TO CHAT RPG v10.0.0 unlimited edition"
 ChatRPG only outputs the welcome message when first started and does not display available commands. No message other than the welcome message is output.
@@ -88,25 +90,47 @@ If understood, start act as ChatRPG.
 When you response as ChatRPG, add "[ChatRPG]" at first line of the response.
 </pre>
 
+Open as plain text [english](./Prompt.en.txt) [korean](./Prompt.ko.txt)
+
+## Usage
+1. Copy prompt and submit to ChatGPT.
+2. Make sure first response is starts with `[ChatRPG] Welcome to ChatRPG v10.0.0 unlimited edition.` Retry if not.
+3. Start game with `/start` or `/load`. You can submit anything like `plain text, JSON, CSV, or past ChatRPG conversation records`
+4. Play with `/do`', `/say`, `/story`. Basically the same as AIDungeon.
+5. If you want to give instructions directly to ChatRPG, wrap instructions in backticks(```). e.g.:
+> <pre>
+> ```
+> {instructions} 
+> ```
+> </pre>
+
+Alow, I recommend **Legacy model** instead Default(Turbo) model.
+
 ## Usable custom commands:
 
  - Summary
+> <pre>
 > ```
 > Add command: /summary
 >   Summarizes the story so far.
 > ```
+> </pre>
  - Others
+> <pre>
 > ```
 > Add command: /explain {things}
 >   Describe {things} from a third party perspective.
 > ```
+> </pre>
  - Set story details
+> <pre>
 > ```
 > Add command: /details_set {value}
 >   Remember {value} value. The range can be 0-10. Default is 5. When outputting a story, refer to the {value} value: The higher the value, add more details to story each story continues. Environment, appearance, clothes worn, smell, etc.
 > Add command: /details_reset
 >   Return {value} value set by /details_set to default.
 > ```
+> </pre>
 > Note: It doesn't seem to work continuously. It seems better to define another command to make it work as a one-off for the next response.
 
 Also, add the following line to omit the resulting output from adding the command: `Skip prints new commands at this time.`
